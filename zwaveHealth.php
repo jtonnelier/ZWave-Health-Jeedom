@@ -12,7 +12,7 @@
 		echo "Merci de vérifier.";
 	}
 	//Verification si la clé API jeedom est correcte
-	else if(!preg_match("#[0-9A-Za-z]{48}#", $argv[2])){
+	else if(!preg_match("#[0-9A-Za-z]#", $argv[2])){
 		echo "La clé API semble être incorrecte.";
 		echo "<br>";
 		echo "Merci de vérifier.";
