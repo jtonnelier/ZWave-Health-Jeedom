@@ -1,6 +1,21 @@
 <?php
-	/** VERIFICATION DES VARIABLES **/
-	//Verification de la présence des arguments obligatoire
+
+	/** VERIFICATION DES VARIABLES OPTIONNELLES **/
+	$zwave_port = "8083";
+	//Si le port est indiqué on le set, sinon c'est celui par defaut
+	if(isset($argv[4])){
+		$zwave_port = $argv[4];
+	}
+	
+	//Folder json temporaire
+	$zwave_health_json = '/tmp/zwave_health.json';
+	if(isset($argv[5])){
+		$zwave_port = $argv[5];
+	}
+	
+	/** VERIFICATION DES VARIABLES OBLIGATOIRES **/
+	
+	//Verification de la présence des arguments obligatoires
 	if(!isset($argv[1]) || !isset($argv[2]) || !isset($argv[3])){
 		echo "Tout les arguments ne sont pas présents.";
 		
@@ -17,6 +32,7 @@
 		echo "<br>";
 		echo "Merci de vérifier.";
 	}
+	//Verification sur le code affichage
 	else if(!preg_match("#[0-3]{1}#", $argv[3])){
 		echo "Le code affichage semble être incorrect.";
 		echo "<br>";
@@ -24,9 +40,7 @@
 	}
 	else{
 		//IP jeedom (parametre)
-		$ip = $argv[1]; 
-		//Port ZWave Daemon (par defaut 8083)
-		$zwave_port = "8083";
+		$ip = $argv[1]; 		
 		//API Key pour acces page sante ZWave
 		$api_key = $argv[2];
 		//Affichage sur le dashboard: 0 - Modules Deads / 1 - Modules Timeout + Dead / 2 - Tout les modules
@@ -35,8 +49,6 @@
 		//USER CONFIRME - NE MODIFIER CES VALEURS QUE SI BESOIN
 		//Adresse de la page santé
 		$api_health = "/ZWaveAPI/Run/network.GetHealth%28%29";
-		//json créé à partir de la page santé zwave
-		$zwave_health_json = '/var/www/html/tmp/jeedom/zwave_health.json';
 		
 		/** TRAITEMENT **/
 		
@@ -70,7 +82,6 @@
 		$good_letters   = array('&agrave;','&acirc;','&auml;','&ccedil;','&egrave;','&eacute;','&ecirc;','&euml;','&icirc;','&iuml;','&ocirc;','&ouml;','&ugrave;','&ucirc;','&uuml;'); //lettres de remplacement
 		$text   = file_get_contents($zwave_health_json); //récupération du contenu du fichier
 		$output  = str_replace($bad_letters, $good_letters, $text); // remplacement des caractères
-		//echo $output;
 		//réécris le fichier avec les caractères remplacés
 		file_put_contents($zwave_health_json, $output);
 
