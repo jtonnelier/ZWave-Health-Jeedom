@@ -100,7 +100,7 @@
 			//On verifie que le module a des données
 			if(isset($module['data']) && $module['data'] != null && $module['data'] != ""){
 				//Verification que le module n'est pas sur pile/batterie
-				if($module['data']['battery_level']['updateTime'] == null){
+				if($module['data']['battery_level']['value'] == null){
 					if(isset($module['last_notification'])){
 						if($module['last_notification'] != null){
 							if (utf8_decode($module['last_notification']['description']) == "Dead."){
