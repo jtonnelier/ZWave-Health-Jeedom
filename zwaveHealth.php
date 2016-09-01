@@ -10,7 +10,7 @@
 	//Folder json temporaire
 	$zwave_health_json = '/tmp/zwave_health.json';
 	if(isset($argv[5])){
-		$zwave_port = $argv[5];
+		$zwave_health_json = $argv[5];
 	}
 	
 	/** VERIFICATION DES VARIABLES OBLIGATOIRES **/
