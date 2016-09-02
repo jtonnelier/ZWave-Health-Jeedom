@@ -100,10 +100,10 @@
 			//On verifie que le module a des données
 			if(isset($module['data']) && $module['data'] != null && $module['data'] != ""){
 				//Verification que le module n'est pas sur pile/batterie
-				if($module['data']['battery_level']['value'] == null){
+				if($module['data']['isListening']['value']){
 					if(isset($module['last_notification'])){
 						if($module['last_notification'] != null){
-							if (utf8_decode($module['last_notification']['description']) == "Dead."){
+							if (utf8_decode($module['last_notification']['description']) == "Dead"){
 								$dead_modules[] = utf8_decode($module['data']['description']['location'])." - ".utf8_decode($module['data']['description']['name']);
 							}
 							else if(utf8_decode($module['last_notification']['description']) == "Timeout"){
