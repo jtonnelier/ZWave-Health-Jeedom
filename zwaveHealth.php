@@ -23,19 +23,19 @@
 	//Verification si l'ip est correcte
 	else if(!preg_match("#([0-9]{1,3}\.){3}[0-9]{1,3}#", $argv[1])){
 		echo "L'adresse IP semble être incorrecte.";
-		echo "<br>";
+		echo "<br />";
 		echo "Merci de vérifier.";
 	}
 	//Verification si la clé API jeedom est correcte
 	else if(!preg_match("#[0-9A-Za-z]#", $argv[2])){
 		echo "La clé API semble être incorrecte.";
-		echo "<br>";
+		echo "<br />";
 		echo "Merci de vérifier.";
 	}
 	//Verification sur le code affichage
 	else if(!preg_match("#[0-3]{1}#", $argv[3])){
 		echo "Le code affichage semble être incorrect.";
-		echo "<br>";
+		echo "<br />";
 		echo "Merci de vérifier.";
 	}
 	else{
@@ -121,41 +121,47 @@
 		}			
 
 		/** HISTORISATION Dead Modules and Timeout **/
-		
+		echo "<br />";
 		echo sizeof($dead_modules) + sizeof($timeout_modules);
 		
 		
 		/** AFFICHAGE **/
 		echo " modules HS: ";
-		echo "<br>";
+		echo "<br />";
 		/** Affichage des modules deads**/
 		if($show_option >= 0){
+			echo "<div style='color:red; text-decoration : underline;'>";
 			echo "Modules Dead: ";
+			echo "</div>";
 			foreach($dead_modules as $dead_module){
-				echo "<br>";
 				echo $dead_module;
+				echo "<br />";
 			}
 		}
-		echo "<br>";
+		echo "<br />";
 		
 		/** Affichage des modules timeouts **/
 		if($show_option >= 1){
-			echo "<br>";
+			echo "<br />";
+			echo "<div style='color:darkorange; text-decoration : underline;'>";
 			echo "Modules Timeout: ";
+			echo "</div>";
 			foreach($timeout_modules as $timeout_module){
-				echo "<br>";
 				echo $timeout_module;
+				echo "<br />";
 			}
 		}
-		echo "<br>";
+		echo "<br />";
 		
 		/** Affichage des module restants **/
 		if($show_option >= 2){
-			echo "<br>";
+			echo "<br />";
+			echo "<div style='color:limegreen; text-decoration : underline;'>";
 			echo "Modules OK: ";
+			echo "</div>";
 			foreach($ok_modules as $ok_module){
-				echo "<br>";
 				echo $ok_module;
+				echo "<br />";
 			}
 		}
 		
