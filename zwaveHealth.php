@@ -117,6 +117,24 @@
 					}
 					
 				}
+				//Traitement des modules piles
+				else{
+					$checked = false;
+					//Modules Piles Timeout				
+					if(isset($module['battery_level']['value'])){
+						if($module['battery_level']['value'] == null){
+							$timeout_modules[] = utf8_decode($module['data']['description']['location'])." - ".utf8_decode($module['data']['description']['name']);
+							$checked = true;
+						}
+					}
+					if($checked == false && isset($module['isFailed']['value'])){
+						$dead_modules[] = utf8_decode($module['data']['description']['location'])." - ".utf8_decode($module['data']['description']['name']);
+						$checked = true;
+					}
+					if($checked == false){
+						$ok_modules[] = utf8_decode($module['data']['description']['location'])." - ".utf8_decode($module['data']['description']['name']);
+					}
+				}
 			}
 		}			
 

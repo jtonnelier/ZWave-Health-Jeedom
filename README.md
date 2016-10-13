@@ -1,5 +1,6 @@
 # ZWave-Health-Jeedom
 Script d'affichage des informations de santé ZWave sur le dashboard Jeedom.
+Support des modules Piles et Secteurs.
 
 # Paramètres Obligatoires:
 
@@ -19,6 +20,5 @@ Script d'affichage des informations de santé ZWave sur le dashboard Jeedom.
 
 #TODO
 
-- Améliorer l'affichage
-- Support des modules Piles
-
+- ~~Améliorer l'affichage~~ - Done V1.2
+- ~~Support des modules Piles~~ - Done V1.3
